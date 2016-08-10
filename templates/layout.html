@@ -1,13 +1,13 @@
-A<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US" class="no-js">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
   <!-- ShareThis js -->
-  <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "44cf95bb-b309-44df-b198-55070bcbc7e0", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
+  	<script type="text/javascript">var switchTo5x=true;</script>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "44cf95bb-b309-44df-b198-55070bcbc7e0", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
   <!-- ShareThis js ends-->
 	<script>(function(){document.documentElement.className='js'})();</script>
 	<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>
@@ -186,7 +186,6 @@ img.emoji {
 <link rel='stylesheet' id='social-logos-css'  href='http://tariquesani.net/blog/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
 <link rel='stylesheet' id='jetpack_css-css'  href='http://tariquesani.net/blog/wp-content/plugins/jetpack/css/jetpack.css?ver=4.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='dashicons-css'  href='http://tariquesani.net/blog/wp-includes/css/dashicons.min.css?ver=4.5.3' type='text/css' media='all' />
-<link rel='stylesheet' id='thickbox-css'  href='http://tariquesani.net/blog/wp-includes/js/thickbox/thickbox.css?ver=4.5.3' type='text/css' media='all' />
 <link rel='stylesheet' id='flickrToolbarCss-css'  href='http://tariquesani.net/blog/wp-content/plugins/flickr-foto-info/css/flickr_toolbar.css?ver=4.5.3' type='text/css' media='all' />
 <!-- This site uses the Google Analytics by MonsterInsights plugin v5.5.2 - Universal disabled - https://www.monsterinsights.com/ -->
 <script type="text/javascript">
@@ -210,10 +209,6 @@ img.emoji {
 <link rel='https://api.w.org/' href='http://tariquesani.net/blog/wp-json/' />
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://tariquesani.net/blog/xmlrpc.php?rsd" />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://tariquesani.net/blog/wp-includes/wlwmanifest.xml" /> 
-<meta name="generator" content="WordPress 4.5.3" />
-<link rel='shortlink' href='http://wp.me/yIRI' />
-
-<link rel='dns-prefetch' href='//v0.wordpress.com'>
 	<meta name="viewport" content="initial-scale=1, maximum-scale=2">
 	<style type="text/css" id="twentyfifteen-header-css">
 			.site-header {
@@ -299,9 +294,15 @@ body.custom-background { background-color: #798b3f; }
 					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
 				</label>
 				<input type="submit" class="search-submit screen-reader-text" value="Search" />
-			</form></aside><aside id="zflickr-2" class="widget widget_flickr"><h2 class="widget-title">Latest @ Flickr</h2><div class='flickr-badge-wrapper zframe-flickr-wrap-ltr'><script type='text/javascript' src='http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=44124448383@N01'></script></div><a href="http://wordpress.org/extend/plugins/flickr-badges-widget/">
-			<span style="font-size: 11px;"><span style="color: #0063DC; font-weight: bold;">Flick</span><span style="color: #FF0084; font-weight: bold;">r</span> Badges Widget</span>
-			</a></aside><aside id="linkcat-2" class="widget widget_links"><h2 class="widget-title">Blogroll</h2>
+			</form>
+			</aside>
+			<aside id="zflickr-2" class="widget widget_flickr">
+			<h2 class="widget-title">Latest @ Flickr</h2>
+			<div class='flickr-badge-wrapper zframe-flickr-wrap-ltr'><script type='text/javascript' src='http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=44124448383@N01'></script> 
+			</div>
+			</a>
+			</aside>
+			<aside id="linkcat-2" class="widget widget_links"><h2 class="widget-title">Blogroll</h2>
 	<ul class='xoxo blogroll'>
 <li><a href="https://www.facebook.com/aasims" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'https://www.facebook.com/aasims', 'Aasim Sani']);" rel="child" title="Aasim Sani&#8217;s facebook account, He is my son" target="_blank">Aasim Sani</a></li>
 <li><a href="http://swatisani.net/blog/" onclick="_gaq.push(['_trackEvent', 'outbound-widget', 'http://swatisani.net/blog/', 'Swati Sani']);" rel="co-resident spouse sweetheart" title="Swati Sani&#8217;s blog, She is my wife and sweetheart :-)" target="_blank">Swati Sani</a></li>
@@ -340,7 +341,7 @@ body.custom-background { background-color: #798b3f; }
 
 </div><!-- .site -->
 
-<script type='text/javascript' src='http://tariquesani.net/blog/wp-content/themes/twentyfifteen/js/skip-link-focus-fix.js?ver=20141010'></script>
+<script type='text/javascript' src="{{ '/js/skip-link-focus-fix.js'|url }}"></script>
 <script type='text/javascript' src="{{ '/js/jquery.js'|url }}"></script>
 <script type='text/javascript' src="{{ '/js/jquery-migrate.min.js'|url }}"></script>
 <script type='text/javascript'>
