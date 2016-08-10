@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% from "macros/sharethis.html" import render_sharethis %}
+{% block title %}{{ this.title }}{% endblock %}
+
+{% block body %}
+<article class="post type-post status-publish format-standard hentry" >
+	<header class="entry-header">
+  		<h2 class="entry-title">{{ this.title }}</h2>
+  	</header>
+  	<div class="entry-content">
+  		{{ this.body }}
+  		{{ render_sharethis( ) }}
+  	</div>
+</article>  
+{% endblock %}

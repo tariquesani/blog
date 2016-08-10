@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for file in $(find . -name '*.jpg' ! -name 'banner_*.jpg'); 
+	do 
+		banner_file=`dirname $file`"/banner_"`basename $file` ;
+
+		if [ ! -f $banner_file ]; then
+			smartcrop --facedetection --width 825 --height 138 $file  $(dirname $file)/banner_$(basename $file); 
+			echo Created Banner from $file 
+		fi
+	done

@@ -1,0 +1,55 @@
+{% macro render_pagination(pagination) %}
+<nav class="navigation pagination" role="navigation">
+    <h2 class="screen-reader-text">Posts navigation</h2>
+    <div class="nav-links">
+      {% if pagination.has_prev %}
+        <a class="prev page-numbers" href="{{ pagination.prev|url }}">Previous page</a>
+      {% endif %}
+
+      {% set this_pages = [] %}
+      {% if pagination.pages <=5 %}
+        {# This will fail if the pages are just 4 or less #}
+        {% set this_pages = [1,2,3,4] %}
+        {{ render_this_pagination(this_pages,pagination)}}
+      {% elif pagination.page in range(4, pagination.pages-2 )  %}
+        <a class="page-numbers" href="{{ pagination.for_page(1)|url}}">   <span class="meta-nav screen-reader-text">Page </span>1
+        </a>
+        <span class="page-numbers dots">…</span>
+        {% set this_pages = [pagination.page-2, pagination.page-1, pagination.page, pagination.page+1, pagination.page+2]%}
+        {{ render_this_pagination(this_pages,pagination)}}
+        <span class="page-numbers dots">…</span>
+          <a class="page-numbers" href="{{ pagination.for_page(pagination.pages)|url}}">   <span class="meta-nav screen-reader-text">Page </span>{{ pagination.pages }}
+        </a>        
+      {% elif pagination.page in range(0,4) %}
+        {% set this_pages = [1,2,3,4,5] %}
+        {{ render_this_pagination(this_pages,pagination)}}
+        <span class="page-numbers dots">…</span>
+          <a class="page-numbers" href="{{ pagination.for_page(pagination.pages)|url}}">   <span class="meta-nav screen-reader-text">Page </span>{{ pagination.pages }}
+        </a>                
+      {% elif pagination.page in range(pagination.pages-2, pagination.pages+1) %}
+        {% set this_pages = [pagination.pages-4,pagination.pages-3,pagination.pages-2,pagination.pages-1, pagination.pages] %}
+        <a class="page-numbers" href="{{ pagination.for_page(1)|url}}">   <span class="meta-nav screen-reader-text">Page </span>1
+        </a>
+        <span class="page-numbers dots">…</span>
+        {{ render_this_pagination(this_pages,pagination)}}
+      {% endif %}
+ 
+      {% if pagination.has_next %}
+        <a class="next page-numbers" href="{{ pagination.next|url }}">Next page</a>
+      {% endif %}
+    </div>
+  </nav>
+{% endmacro %}
+
+{% macro render_this_pagination(this_pages,pagination) %}
+      {% for page_number in this_pages %}
+        {% if pagination.page == page_number %}
+        <span class="page-numbers current">
+          <span class="meta-nav screen-reader-text">Page </span>{{ pagination.page }}
+        </span>
+        {% else %}
+        <a class="page-numbers" href="{{ pagination.for_page(page_number)|url}}">   <span class="meta-nav screen-reader-text">Page </span>{{ page_number }}
+        </a>
+        {% endif %}
+      {% endfor %}
+{% endmacro %}

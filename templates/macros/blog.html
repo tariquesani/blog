@@ -1,0 +1,47 @@
+{% macro render_blog_post(post, from_index=false) %}
+{% from "macros/sharethis.html" import render_sharethis %}
+{% from "macros/footer.html" import render_blog_post_footer %}
+<article class="post type-post status-publish format-standard hentry" >
+  <header class="entry-header">
+    {% if from_index %}
+      <h2 class="entry-title"><a href="{{ post|url }}">{{ post.title }}</a></h2>
+    {% else %}
+      <h2 class="entry-title">{{ post.title }}</h2>
+    {% endif %}      
+    </header>
+    <div class="entry-content">
+      {{ post.body }}
+      {{ render_sharethis( ) }}
+    </div>
+    {{ render_blog_post_footer(post) }}
+</article>
+
+
+{% if not from_index %}
+{% set siblings = post.get_siblings() %}
+<nav class="navigation post-navigation" role="navigation">
+    <h2 class="screen-reader-text">Post navigation</h2>
+    <div class="nav-links">
+  {% if siblings.prev_page %}    
+      <div class="nav-previous" style="background-image: url('/blog/{{ siblings.prev_page['_slug'] }}/banner_{{ siblings.prev_page['featured_image'] }}'); ">
+        <a href="{{ siblings.prev_page|url }}" rel="prev">
+          <span class="meta-nav" aria-hidden="true">Previous</span> 
+          <span class="screen-reader-text">Previous post:</span> 
+          <span class="post-title">{{ siblings.prev_page['title'] }}</span>
+        </a> 
+      </div>
+  {% endif %}
+  {% if siblings.next_page %}
+      <div class="nav-next" style="background-image: url('/blog/{{ siblings.next_page['_slug'] }}/banner_{{ siblings.next_page['featured_image'] }}'); ">
+        <a href="{{ siblings.next_page|url }}" rel="next">
+          <span class="meta-nav" aria-hidden="true">Next</span> 
+          <span class="screen-reader-text">Next post:</span> 
+          <span class="post-title">{{ siblings.next_page['title'] }}</span>
+        </a>
+      </div>
+  {% endif %}      
+    </div>
+</nav>
+{% endif %}
+
+{% endmacro %}

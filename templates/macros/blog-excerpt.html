@@ -1,0 +1,17 @@
+{% macro render_blog_post_excerpt(post) %}
+{% from "macros/sharethis.html" import render_sharethis %}
+{% from "macros/footer.html" import render_blog_post_footer %}
+<article id="post-3884" class="is-second post type-post status-publish format-standard {% if post.featured_image %}has-post-thumbnail{% endif %} hentry">
+	{% if post.featured_image %}	
+	<img src="/blog/{{ post._slug }}/banner_{{ post.featured_image }}" class="attachment-pagination-thumb size-pagination-thumb wp-post-image" alt="{{post.title}}" width="100%">
+	{% endif %}
+	<header class="entry-header">
+		<h2 class="entry-title"><a href="{{ post|url }}" rel="bookmark">{{post.title}}</a></h2>	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p>{{post.excerpt}}
+		<a href="{{ post|url }}" class="more-link">Continue reading <span class="screen-reader-text">{{post.title}}</span></a></p>
+	</div><!-- .entry-content -->
+	{{ render_blog_post_footer(post) }}	
+</article>
+{% endmacro %}
