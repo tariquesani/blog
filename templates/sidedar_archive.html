@@ -1,11 +1,12 @@
 {% set posts = site.query('/blog').include_hidden(false).all() %}
 {% if posts %}
   {% set new_month = '' %}
-  {# create a dict or it will not work #}
+  {#  create a dict or it will not work #}
   {% set x = {1:2} %}
-<ul>
   {% for post in posts %}
     {% set this_month = post.pub_date.strftime('%B %Y') %}
+    {% set this_month_number = post.pub_date.strftime('%m') %}
+    {% set this_year = post.pub_date.strftime('%Y') %}
     {% if not x[this_month] %}
       {% set this_month_count = 0 %}
     {% else %}
@@ -18,11 +19,11 @@
     {% if this_month != new_month %}
       {# Skip the blank first month #}
       {% if x[new_month] %}
-        <li>{{ new_month }}({{x[new_month]}})</li>
+        <li><a href="/blog/{{ new_year }}/{{ new_month_number }}/">{{ new_month }} ({{x[new_month]}})</a></li>
       {% endif %}
       {% set new_month =  this_month %}
+      {% set new_month_number =  this_month_number %}
+      {% set new_year =  this_year %}
     {% endif %}
-
   {% endfor %}
-</ul>
 {% endif %}
