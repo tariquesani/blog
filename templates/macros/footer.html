@@ -3,12 +3,17 @@
       <span class="posted-on">
         <span class="screen-reader-text">Posted on </span>
           <a href="{{ post|url }}" rel="bookmark">
-            <time class="entry-date published" datetime="2016-06-14T09:31:52+00:00">{{post.pub_date.strftime('%B %d, %Y')}}</time>
+            <time class="entry-date published" datetime="{{post.pub_date.strftime('%Y-%m-%dT%H:%M:%S+00:00')}}">{{post.pub_date.strftime('%B %d, %Y')}}</time>
           </a>
       </span>
       <span class="cat-links">
         <span class="screen-reader-text">Categories </span>
-        <a href="http://tariquesani.net/blog/category/code-and-programming/" rel="category tag">Code and Programming</a>
+        {% for c in post.categories %}
+            {% set category = site.get('/blog-categories/'+c) %}
+            {% if category %}
+              <a href="{{ category|url }}" rel="category tag">{{ category.name }}</a>
+            {% endif %}
+        {% endfor%}
       </span>
       <span class="comments-link">
         <a href="http://tariquesani.net/blog/2016/06/14/strava-total-speed-chrome-extension/#disqus_thread" data-disqus-identifier="3890 http://tariquesani.net/blog/?p=3890">0 Comments</a>
