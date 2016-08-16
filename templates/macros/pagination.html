@@ -8,8 +8,11 @@
 
       {% set this_pages = [] %}
       {% if pagination.pages <=5 %}
-        {# This will fail if the pages are just 4 or less #}
-        {% set this_pages = [1,2,3,4] %}
+        
+        {% for page_number in range(0, pagination.pages)%}
+          {% set x = this_pages.append(page_number+1) %}
+        {% endfor %}
+
         {{ render_this_pagination(this_pages,pagination)}}
       {% elif pagination.page in range(4, pagination.pages-2 )  %}
         <a class="page-numbers" href="{{ pagination.for_page(1)|url}}">   <span class="meta-nav screen-reader-text">Page </span>1
