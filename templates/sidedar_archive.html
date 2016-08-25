@@ -25,5 +25,8 @@
       {% set new_month_number =  this_month_number %}
       {% set new_year =  this_year %}
     {% endif %}
+    {% if(loop.last) %}
+       <li><a href="/blog/{{ new_year }}/{{ new_month_number }}/">{{ new_month }} ({{x[new_month]}})</a></li>
+    {% endif %}    
   {% endfor %}
 {% endif %}
